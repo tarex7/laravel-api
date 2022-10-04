@@ -23,18 +23,18 @@ export default {
             posts: [],
         }
     },
+
     methods: {
         fetchPosts() {
-            axios.get("http://127.0.0.1:8000/API/posts").then((res) => {
+            axios.get("/api/posts").then((res) => {
                 this.posts = res.data;
             });
-            console.log(this.posts);
         },
-        logsomething() {}
+       
     },
     
     mounted() {
-        this.fetchPosts;
+        this.fetchPosts();
     },
 };
 </script>
