@@ -1967,9 +1967,37 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'BaseCard',
+  name: "BaseCard",
+  data: function data() {
+    return {
+      showPost: false
+    };
+  },
   props: {
     post: Object
+  },
+  methods: {
+    showMore: function showMore(e) {
+      e.preventDefault();
+      this.showPost = !this.showPost;
+    }
+  },
+  computed: {
+    published: function published() {
+      var postDate = new Date(this.post.created_at);
+      var day = postDate.getDate();
+      var month = postDate.getMonth();
+      var year = postDate.getFullYear();
+      var hours = postDate.getHours();
+      var minutes = postDate.getMinutes();
+      if (day < 10) day = "0" + day;
+      if (month < 10) month = "0" + month;
+      return "".concat(day, "-").concat(month, "-").concat(year, "  ").concat(hours, ":").concat(minutes);
+    },
+    preview: function preview() {
+      var postPreview = this.post.text.slice(0, 500);
+      return "".concat(postPreview, "...");
+    }
   }
 });
 
@@ -2059,7 +2087,7 @@ var staticRenderFns = [function () {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Home "), _c("span", {
+  }, [_c("span", {
     staticClass: "sr-only"
   }, [_vm._v("(current)")])])])])]);
 }];
@@ -2087,18 +2115,23 @@ var render = function render() {
     staticClass: "card w-75 mx-auto my-5"
   }, [_c("div", {
     staticClass: "card-body"
-  }, [_c("h5", {
+  }, [_c("h3", {
     staticClass: "card-title"
   }, [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("h6", {
     staticClass: "card-subtitle mb-2 text-muted"
-  }, [_vm._v("Card subtitle")]), _vm._v(" "), _c("p", {
+  }, [_c("strong", [_vm._v("Autore:")]), _vm._v(" " + _vm._s(_vm.post.user.name) + "\n        ")]), _vm._v(" "), _c("p", {
+    staticClass: "card-title"
+  }, [_vm._v("Pubblicato il: " + _vm._s(_vm.published))]), _vm._v(" "), !_vm.showPost ? _c("p", {
     staticClass: "card-text"
-  }, [_vm._v("\n            " + _vm._s(_vm.post.text) + "\n        ")]), _vm._v(" "), _c("a", {
+  }, [_vm._v("\n            " + _vm._s(_vm.preview) + "\n        ")]) : _c("p", [_vm._v("\n            " + _vm._s(_vm.post.text) + "\n        ")]), _vm._v(" "), _c("a", {
     staticClass: "card-link",
     attrs: {
       href: "#"
+    },
+    on: {
+      click: _vm.showMore
     }
-  }, [_vm._v("Card link")])])]);
+  }, [_vm._v("Leggi")])])]);
 };
 
 var staticRenderFns = [];

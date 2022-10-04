@@ -16,7 +16,10 @@ class PostController extends Controller
     public function index()
     {
         
-        $posts = Post::all();
+        $posts = Post::where('id', '>', 1)
+        ->orderBy('created_at','DESC')
+        ->with('user')
+        ->get();
         return response()->json($posts);
        
     }

@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active" href="#"
-                    >Home <span class="sr-only">(current)</span></a
+                    > <span class="sr-only">(current)</span></a
                 >
                 <!-- <a class="nav-link" href="#">Features</a>
                 <a class="nav-link" href="#">Pricing</a>
