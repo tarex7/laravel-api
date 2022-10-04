@@ -1967,7 +1967,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'BaseCard'
+  name: 'BaseCard',
+  props: {
+    post: Object
+  }
 });
 
 /***/ }),
@@ -1991,7 +1994,14 @@ var render = function render() {
     staticClass: "content"
   }, [_c("div", {
     staticClass: "title m-b-md"
-  }, [_c("AppHeader")], 1), _vm._v(" "), _c("BaseCard")], 1);
+  }, [_c("AppHeader")], 1), _vm._v(" "), _vm._l(_vm.posts, function (post) {
+    return _c("BaseCard", {
+      key: post.id,
+      attrs: {
+        post: post
+      }
+    });
+  })], 2);
 };
 
 var staticRenderFns = [];
@@ -2073,38 +2083,25 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("div", {
-    staticClass: "card",
-    staticStyle: {
-      width: "18rem"
-    }
+    staticClass: "card w-75 mx-auto my-5"
   }, [_c("div", {
     staticClass: "card-body"
   }, [_c("h5", {
     staticClass: "card-title"
-  }, [_vm._v("Card title")]), _vm._v(" "), _c("h6", {
+  }, [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("h6", {
     staticClass: "card-subtitle mb-2 text-muted"
   }, [_vm._v("Card subtitle")]), _vm._v(" "), _c("p", {
     staticClass: "card-text"
-  }, [_vm._v("\n            Some quick example text to build on the card title and make up\n            the bulk of the card's content.\n        ")]), _vm._v(" "), _c("a", {
+  }, [_vm._v("\n            " + _vm._s(_vm.post.text) + "\n        ")]), _vm._v(" "), _c("a", {
     staticClass: "card-link",
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Card link")]), _vm._v(" "), _c("a", {
-    staticClass: "card-link",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Another link")])])]);
-}];
+  }, [_vm._v("Card link")])])]);
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 

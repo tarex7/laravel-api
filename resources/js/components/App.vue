@@ -2,18 +2,17 @@
 <template>
     <div class="content">
         <div class="title m-b-md">
-           <AppHeader/>
+            <AppHeader />
         </div>
-    <BaseCard/>
-      
+        <BaseCard v-for="post in posts" :key="post.id" :post="post" />
     </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
-import AppHeader from './AppHeader.vue';
-import BaseCard from './Posts/BaseCard.vue';
+import AppHeader from "./AppHeader.vue";
+import BaseCard from "./Posts/BaseCard.vue";
 
 export default {
     name: "App",
@@ -21,7 +20,7 @@ export default {
     data() {
         return {
             posts: [],
-        }
+        };
     },
 
     methods: {
@@ -30,9 +29,8 @@ export default {
                 this.posts = res.data;
             });
         },
-       
     },
-    
+
     mounted() {
         this.fetchPosts();
     },
