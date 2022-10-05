@@ -10,9 +10,23 @@ import BaseCard from '../Posts/BaseCard.vue';
 export default {
     name: "HoemPage",
     components: { BaseCard },
-    props: {
-        posts: Array
-    }
+    data() {
+        return {
+            posts: [],
+        };
+    },
+   
+    methods: {
+        fetchPosts() {
+            axios.get("/api/posts").then((res) => {
+                this.posts = res.data;
+            });
+        },
+    },
+
+    mounted() {
+        this.fetchPosts();
+    },
 };
 </script>
 
