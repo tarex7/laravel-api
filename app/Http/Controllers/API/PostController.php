@@ -19,6 +19,7 @@ class PostController extends Controller
         $posts = Post::where('id', '>', 1)
         ->orderBy('created_at','DESC')
         ->with('user')
+        ->with('category')
         ->get();
         return response()->json($posts);
        
@@ -45,6 +46,8 @@ class PostController extends Controller
     {
        // $post = Post::where('id', $id)->get();
        $post = Post::with(['category','tags','user'])->findOrFail($id);
+
+       if(!$post) return response('Not Found', 404);
        return response()->json($post);
     }
 

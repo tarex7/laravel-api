@@ -15,6 +15,9 @@
                 {{post.text}}
             </p>
             <a href="#" @click="showMore" class="card-link">Leggi</a>
+            <div class="mt-4">
+                <span  class="badge  p-1" :class="`badge-${post.category.color}`">{{post.category.label}}</span>
+            </div>
         </div>
     </div>
 </template>

@@ -4,7 +4,7 @@
         <div class="title m-b-md">
             <AppHeader />
         </div>
-        <BaseCard v-for="post in posts" :key="post.id" :post="post" />
+        <HomePage :posts="posts" />
     </div>
 </template>
 
@@ -13,10 +13,11 @@ import axios from "axios";
 
 import AppHeader from "./AppHeader.vue";
 import BaseCard from "./Posts/BaseCard.vue";
+import HomePage from "./Pages/HomePage.vue";
 
 export default {
     name: "App",
-    components: { AppHeader, BaseCard },
+    components: { AppHeader, BaseCard, HomePage },
     data() {
         return {
             posts: [],
