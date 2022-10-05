@@ -21,4 +21,6 @@ use App\Models\Post;
 
 Route::namespace('api')->group(function () {
     Route::get('/posts', 'PostController@index');
+    Route::get('/posts/{id}', 'PostController@show');
+
 });
